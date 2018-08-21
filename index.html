@@ -2,6 +2,7 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- config handles all sensitive info like api keys/tokens, etc .-->
         <script src="./config.js"></script>
     </head>
     <body>
@@ -12,10 +13,10 @@
             function scrapeSlackLinks() {
                 $.ajax({
                     // this is the javascript channel
-                    url: "https://slack.com/api/conversations.history?token=[TOKEN GOES HERE]&channel=[CHANNEL GOES HERE]&pretty=1"
+                    url: "https://slack.com/api/conversations.history?token=" + slackApi_token + "&channel=" + slackJsChannel + "&pretty=1"
 
                     //this is the test channel
-                    //url: "https://slack.com/api/conversations.history?token=[TOKEN GOES HERE]&channel=[CHANNEL GOES HERE]&pretty=1"
+                    //url: "https://slack.com/api/conversations.history?token=" + slackApi_token + "&channel=" + slackTestChannel + "&pretty=1"
                 }).done(function(response) {
                     var filter = [];
                     for (var i = 0; i < response.messages.length; i++){
@@ -43,13 +44,13 @@
 
                 // Only classic templates in MailChimp work with the API
                 var settings = {
-                    "url": "https://[API KEY].api.mailchimp.com/3.0/templates/[TEMPLATE KEY]",
+                    "url": "https://" + mailChimpApiKey + ".api.mailchimp.com/3.0/templates/" + mailChimpTemplateKey,
                     "method": "PATCH",
                     "headers": {
                         "Content-Type": "application/json",
-                        "Authorization": "[AUTH TOKEN]",
+                        "Authorization": mailChimpAuth,
                         "Cache-Control": "no-cache",
-                        "Postman-Token": "[POSTMAN TOKEN]"
+                        "Postman-Token": postmanToken
                     },
                     "data": links
                 }   
