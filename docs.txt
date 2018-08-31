@@ -2,8 +2,6 @@ So far this seems to be the api that returns all the converstations along with l
 
 Postman helped working with the API's. I was able to form the headers for authentication using it
 
-For MailChimp I had to test the api with IE because of Cors: https://stackoverflow.com/questions/20035101/why-does-my-javascript-get-a-no-access-control-allow-origin-header-is-present
-
 Only 'Classic' templates can be edited with the api at MailChimp
 
 So far we are blacklisting:
